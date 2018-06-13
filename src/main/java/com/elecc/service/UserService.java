@@ -5,10 +5,14 @@ package com.elecc.service;
 
 import java.io.Serializable;
 
+import org.springframework.stereotype.Service;
+
 /**
  * @author Ramón Cigüenza
  *
  */
+
+@Service(value = "userService")
 public interface UserService extends Serializable {
 
 	// Servicio de autenticación de usuarios, devolverá el tipo de privilegio:

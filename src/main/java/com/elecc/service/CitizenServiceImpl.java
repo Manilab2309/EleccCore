@@ -1,5 +1,5 @@
 /**
- * 
+ * Implementación de Servicios para mantenimiento de ciudadanos
  */
 package com.elecc.service;
 

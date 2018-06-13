@@ -5,10 +5,14 @@ package com.elecc.service;
 
 import java.io.Serializable;
 
+import org.springframework.stereotype.Service;
+
 /**
  * @author Ramón Cigüenza
  *
  */
+
+@Service(value = "electionsService")
 public interface ElectionsService extends Serializable {
 
 	// Servicio de consulta de escrutinio, como parámetro recibirá el nombre de

@@ -1,5 +1,5 @@
 /**
- * Interfaz de Servicios para mantenimiento de Ciudadanos
+ * Interfaz de Servicios para mantenimiento de ciudadanos
  */
 package com.elecc.service;
 

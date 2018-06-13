@@ -6,12 +6,18 @@ package com.elecc.service;
 import java.io.Serializable;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.elecc.entity.Citizen;
+
+
 
 /**
  * @author Ramón Cigüenza
  *
  */
+
+@Service(value = "partyService")
 public interface PartyService extends Serializable {
 	
 	// Registrar nuevo partido político
