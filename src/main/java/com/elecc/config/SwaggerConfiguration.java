@@ -13,7 +13,6 @@ import com.google.common.base.Predicates;
 
 import org.slf4j.Logger;
 
-import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
