@@ -5,14 +5,18 @@ package com.elecc.entity;
 
 import java.io.Serializable;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  * @author Ramón Cigüenza
  *
  *         Al ser una BBDD no relacional no se precisa distinguir entre
  *         ciudadanos, usuarios de la aplicación y candidatos, todos son
- *         personas con más o menos campos.
+ *         personas con más o menos campos. Tampoco se precisa indicar la comunidad ya que en la
+ *         escalabilidad de la BBDD cada provincia tendra su tabla citizen con sus cliudadanos.
  */
 
+@Document(collection = "citizen")
 public class Citizen implements Serializable {
 
 	/**
@@ -27,7 +31,7 @@ public class Citizen implements Serializable {
 	private String pass;
 	private String province;
 	
-	// Un usuario puede ser sin priviligios, sólo podrá votar, o administrador, podrá votar y consultar escrutinio.
+	// Un usuario puede ser sin priviligios, sólo podrá votar 0, o administrador 1, podrá votar y consultar escrutinio.
 	private int privileges;
 	
 	// Un candidato tendrá foto publicada, un ciudadano normal no.

@@ -3,7 +3,10 @@
  */
 package com.elecc.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.elecc.repository.CitizenDao;
 
 /**
  * @author Ramón Cigüenza
@@ -11,13 +14,15 @@ import org.springframework.stereotype.Service;
  */
 
 @Service(value = "userService")
-public class UserServiceimpl implements UserService {
+public class UserServiceImpl implements UserService {
 	
 	private static final long serialVersionUID = 1L;
 
+	@Autowired
+	private CitizenDao citizenRepositoryDao;
+	
 	public int authUser(String identification, String pass) {
-		// TODO Auto-generated method stub
-		return 0;
+		return citizenRepositoryDao.authUser(identification, pass);
 	}
 
 	public void updatePrivilege(String identOwner, String identCitizen, int newPrivilege) {
