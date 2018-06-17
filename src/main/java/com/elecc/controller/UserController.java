@@ -3,8 +3,10 @@
  */
 package com.elecc.controller;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.MediaType;
 
+import org.apache.coyote.http11.Http11AprProtocol;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,10 +45,15 @@ public class UserController {
 			@ApiResponse(code = 606, message = "Invalid Input")
 	})
 	
-	public @ResponseBody void authUser (@RequestBody String identification, String pass){
-		userService.authUser(identification, pass);
+	public @ResponseBody int authUser (String identification, String pass, HttpServletResponse response){
+		int result = userService.authUser(identification, pass);
+		
+		if (result == -1){
+			// return 401 not authorised
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+		}
+		return result;
+		
 	}
-	
-	
 	
 }

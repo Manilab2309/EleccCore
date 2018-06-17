@@ -6,6 +6,7 @@ package com.elecc.entity;
 import java.io.Serializable;
 
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 /**
  * @author Ramón Cigüenza
@@ -24,17 +25,30 @@ public class Citizen implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Field("_id")
 	private String idUser;
+	
+	@Field("name")
 	private String name;
+	
+	@Field("surname")
 	private String surname;
+	
+	@Field("ident")
 	private String identification;
+	
+	@Field("sign")
 	private String pass;
+	
+	@Field("province")
 	private String province;
 	
 	// Un usuario puede ser sin priviligios, sólo podrá votar 0, o administrador 1, podrá votar y consultar escrutinio.
+	@Field("profile")
 	private int privileges;
 	
 	// Un candidato tendrá foto publicada, un ciudadano normal no.
+	@Field("photoURL")
 	private String photoURL;
 
 	public int getPrivileges() {
