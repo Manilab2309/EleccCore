@@ -11,6 +11,8 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.elecc.entity.Citizen;
+import com.elecc.exceptions.UserNotAuthorizedException;
+import com.elecc.util.Constants;
 
 /**
  * @author Ramón Cigüenza
@@ -27,19 +29,17 @@ public class MDBCitizenDaoImpl implements CitizenDao {
 	MongoTemplate mongoTemplate;
 
 	// Implementación de la autenticación del usuario
-	public int authUser(String identification, String pass) {
-		
-		int result=-1;
+	public void authUser(String identification, String pass) throws UserNotAuthorizedException {
 		
 		Query query = new Query();
 		query.addCriteria(Criteria.where("ident").is(identification));
 		Citizen citizen = mongoTemplate.findOne(query,Citizen.class);	
 		
-		if(citizen.getPass().equals(pass)){
-			return citizen.getPrivileges();
+		if(!citizen.getPass().equals(pass)){
+			throw new UserNotAuthorizedException(Constants.MsgExceptions.MSG_ERROR_USER_NOT_AUTHORIZED);
 		}
 		
-		return result;
+
 	}
 
 	public void updatePrivilege(String identOwner, String identCitizen, int newPrivilege) {

@@ -5,6 +5,8 @@ package com.elecc.repository;
 
 import java.io.Serializable;
 
+import com.elecc.exceptions.UserNotAuthorizedException;
+
 /**
  * @author Ramón Cigüenza
  *
@@ -21,7 +23,7 @@ public interface CitizenDao extends Serializable {
 	public void voteParty(String party);
 	
 	// Autenticación del usuario
-	public int authUser(String identification, String pass);
+	public void authUser(String identification, String pass) throws UserNotAuthorizedException;
 		
 	// Cambio de privilegios al usuario
 	public void updatePrivilege(String identOwner, String identCitizen, int newPrivilege);
