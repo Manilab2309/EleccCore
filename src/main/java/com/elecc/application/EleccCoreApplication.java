@@ -17,7 +17,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @ComponentScan("com.elecc.entity")
 @ComponentScan("com.elecc.repository")
 
-// Muy importante para evitar los errores de mapping hql, aqui va a leer Hibernate tus entidades
 @EntityScan(basePackages = "com.elecc.entity")
 
 @SpringBootApplication

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +22,7 @@ import com.elecc.util.Constants;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
@@ -31,8 +33,8 @@ import io.swagger.annotations.ApiResponses;
 
 @Controller
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/elecc")
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*", maxAge=6000)
 @Api(value="UserControllerAPI",consumes=MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
 public class UserController {
 	
@@ -42,21 +44,24 @@ public class UserController {
 	@Autowired
 	private UserServiceImpl userService;
 	
-	@CrossOrigin(origins = "http://localhost:4200")
-	@RequestMapping (value="/authUser",method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
+	@RequestMapping (value="/authUser", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON)
 	@ApiOperation("Auth user")
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "OK - User allowed"),
 			@ApiResponse(code = 404, message = "KO - User doesnt exists"),
 			@ApiResponse(code = 606, message = "Invalid Input")
 	})
-	
-	public @ResponseBody void authUser (String identification, String pass) throws UserNotAuthorizedException{
+	public @ResponseBody void authUser (
+			@RequestParam(value="identification") String identification, 
+			@RequestParam(value="pass") String pass) 
+					throws UserNotAuthorizedException{
 				
 		try {
 			
 			// User authentication
+			logger.info("[ELECC CONTROLLER] - Autenticando...");
 			userService.authUser(identification, pass);
+			logger.info("[ELECC CONTROLLER] - Autenticado!");
 					
 		}catch (UserNotAuthorizedException e){
 			logger.debug(Constants.MsgDebugOperations.DEBUG_MSG_ERROR_USER_NOT_AUTHORIZED);
