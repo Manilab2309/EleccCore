@@ -12,18 +12,18 @@ import com.elecc.config.SwaggerConfiguration;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@ComponentScan("com.elecc.controller")
-@ComponentScan("com.elecc.service")
-@ComponentScan("com.elecc.entity")
-@ComponentScan("com.elecc.repository")
+/**
+ * @author Ramón Cigüenza
+ *
+ */
+
+@ComponentScan("com.elecc.*")
 
 @EntityScan(basePackages = "com.elecc.entity")
 
 @SpringBootApplication
 @EnableSwagger2
-
-//Esto permite cargar tu clase personalizada de configuración Swagger, así el engine la encuentra y ejecuta
-@Import(SwaggerConfiguration.class) 
+@Import(SwaggerConfiguration.class)
 public class EleccCoreApplication {
 
 	private static final Logger logger = LoggerFactory.getLogger(EleccCoreApplication.class);

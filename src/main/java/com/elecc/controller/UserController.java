@@ -22,7 +22,6 @@ import com.elecc.util.Constants;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
@@ -34,7 +33,7 @@ import io.swagger.annotations.ApiResponses;
 @Controller
 @RestController
 @RequestMapping("/elecc")
-@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*", maxAge=6000)
+@CrossOrigin(origins = "https://localhost:4242", allowedHeaders = "*", maxAge=6000)
 @Api(value="UserControllerAPI",consumes=MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
 public class UserController {
 	
