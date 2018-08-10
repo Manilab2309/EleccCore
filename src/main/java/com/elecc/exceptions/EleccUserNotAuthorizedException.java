@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  */
 
 @ResponseStatus(value=HttpStatus.UNAUTHORIZED, reason="User Not Authorized")  // 404
-public class UserNotAuthorizedException extends Exception{
+public class EleccUserNotAuthorizedException extends RuntimeException{
 
 	/**
 	 * Serial ID
@@ -24,21 +24,21 @@ public class UserNotAuthorizedException extends Exception{
 	 */
 	private static final String DEFAULT_MESSAGE_ERROR = "User Not Authorized";
 
-	public UserNotAuthorizedException() {
+	public EleccUserNotAuthorizedException() {
 		super(DEFAULT_MESSAGE_ERROR);
     }
 
-    public UserNotAuthorizedException(String message) {
+    public EleccUserNotAuthorizedException(String message) {
         super(message);
         
     }
 
-    public UserNotAuthorizedException(Throwable cause) {
+    public EleccUserNotAuthorizedException(Throwable cause) {
         super(cause);
         
     }
 
-    public UserNotAuthorizedException(String message, Throwable cause) {
+    public EleccUserNotAuthorizedException(String message, Throwable cause) {
         super(message, cause);
         
     }

@@ -23,6 +23,7 @@ public class JWTValidator {
     public JWTUser validate(String token) {
 
         JWTUser jwtUser = null;
+        
         try {
             Claims body = Jwts.parser()
                     .setSigningKey(secret)
@@ -31,7 +32,7 @@ public class JWTValidator {
 
             jwtUser = new JWTUser();
 
-            jwtUser.setDni(body.getSubject());
+            jwtUser.setIdent(body.getSubject());
             jwtUser.setRole((String) body.get("role"));
         }
         catch (Exception e) {

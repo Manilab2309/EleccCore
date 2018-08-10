@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.elecc.exceptions.UserNotAuthorizedException;
+import com.elecc.exceptions.EleccUserNotAuthorizedException;
 import com.elecc.service.UserServiceImpl;
 import com.elecc.util.Constants;
 
@@ -53,7 +53,7 @@ public class UserController {
 	public @ResponseBody void authUser (
 			@RequestParam(value="identification") String identification, 
 			@RequestParam(value="pass") String pass) 
-					throws UserNotAuthorizedException{
+					throws EleccUserNotAuthorizedException{
 				
 		try {
 			
@@ -62,9 +62,9 @@ public class UserController {
 			userService.authUser(identification, pass);
 			logger.info("[ELECC CONTROLLER] - Autenticado!");
 					
-		}catch (UserNotAuthorizedException e){
+		}catch (EleccUserNotAuthorizedException e){
 			logger.debug(Constants.MsgDebugOperations.DEBUG_MSG_ERROR_USER_NOT_AUTHORIZED);
-			throw new UserNotAuthorizedException("Invalid Credentials: "+e.getMessage());
+			throw new EleccUserNotAuthorizedException("Invalid Credentials: "+e.getMessage());
 		}
 	}
 	

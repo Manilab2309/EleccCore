@@ -7,7 +7,8 @@ import java.io.Serializable;
 
 import org.springframework.stereotype.Service;
 
-import com.elecc.exceptions.UserNotAuthorizedException;
+import com.elecc.exceptions.EleccUserNotAuthorizedException;
+import com.elecc.security.repository.JWTUser;
 
 /**
  * @author Ramón Cigüenza
@@ -19,7 +20,7 @@ public interface UserService extends Serializable {
 
 	// Servicio de autenticación de usuarios, devolverá el tipo de privilegio:
 	// usuario corriente o administrador
-	public void authUser(String identification, String pass) throws UserNotAuthorizedException;
+	public JWTUser authUser(String identification, String pass) throws EleccUserNotAuthorizedException;
 	
 	// Servicio que modifica el privilegio de un usuario en la aplicación
 	// Esta acción sólo la podrán llevar a cabo los administradores

@@ -6,8 +6,9 @@ package com.elecc.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.elecc.exceptions.UserNotAuthorizedException;
+import com.elecc.exceptions.EleccUserNotAuthorizedException;
 import com.elecc.repository.CitizenDao;
+import com.elecc.security.repository.JWTUser;
 
 /**
  * @author Ramón Cigüenza
@@ -22,8 +23,8 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private CitizenDao citizenRepositoryDao;
 	
-	public void authUser(String identification, String pass) throws UserNotAuthorizedException {
-		citizenRepositoryDao.authUser(identification, pass);
+	public JWTUser authUser(String identification, String pass) throws EleccUserNotAuthorizedException {
+		return citizenRepositoryDao.authUser(identification, pass);
 	}
 
 	public void updatePrivilege(String identOwner, String identCitizen, int newPrivilege) {
