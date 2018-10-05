@@ -8,6 +8,7 @@ import javax.ws.rs.core.MediaType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,7 @@ import com.elecc.exceptions.EleccUserNotAuthorizedException;
 import com.elecc.security.jwt.JWTGenerator;
 import com.elecc.security.repository.JWTToken;
 import com.elecc.security.repository.JWTUser;
-import com.elecc.service.UserServiceImpl;
+import com.elecc.service.UserService;
 import com.elecc.util.Constants;
 
 import io.swagger.annotations.ApiOperation;
@@ -31,6 +32,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/elecc")
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @CrossOrigin(origins = "*", allowedHeaders = "*", maxAge = 6000)
 public class TokenController {
 
@@ -38,7 +40,7 @@ public class TokenController {
 	private static final Logger logger = LoggerFactory.getLogger(TokenController.class);
 
 	@Autowired
-	private UserServiceImpl userService;
+	private UserService userService;
 
 	private JWTGenerator jwtGenerator;
 

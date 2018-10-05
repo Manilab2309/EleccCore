@@ -18,8 +18,11 @@ import com.elecc.security.repository.JWTUser;
 @Service(value = "userService")
 public class UserServiceImpl implements UserService {
 	
-	private static final long serialVersionUID = 1L;
-
+	/**
+	 * Serial ID Object
+	 */
+	private static final long serialVersionUID = 3159512606854079070L;
+	
 	@Autowired
 	private CitizenDao citizenRepositoryDao;
 	

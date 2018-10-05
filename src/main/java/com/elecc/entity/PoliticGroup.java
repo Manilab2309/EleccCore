@@ -6,16 +6,22 @@ package com.elecc.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  * @author Ramón Cigüenza
+ * 
+ * 		Los partidos políticos contemplan como campo una lista de ciudadanos candidatos
  *
  */
-public class Party implements Serializable {
+
+@Document(collection = "partidos")
+public class PoliticGroup implements Serializable {
 
 	/**
-	 * Default serializable object ID 
+	 * Serial ID Object
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -3050881464509458368L;
 	
 	private String name;
 	private String urlOfficialWeb;

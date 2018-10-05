@@ -14,8 +14,13 @@ import com.elecc.service.ElectionsService;
 @Service(value = "electionsService")
 public class ElectionsServiceImpl implements ElectionsService {
 
-	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * Serial ID Object
+	 */
+	private static final long serialVersionUID = 1477202157025174306L;
+	
+
 	public float getPoll(String scope) {
 		// TODO Auto-generated method stub
 		return 0;

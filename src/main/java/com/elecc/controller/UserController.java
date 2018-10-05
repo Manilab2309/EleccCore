@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.elecc.exceptions.EleccUserNotAuthorizedException;
-import com.elecc.service.UserServiceImpl;
+import com.elecc.service.UserService;
 import com.elecc.util.Constants;
 
 import io.swagger.annotations.Api;
@@ -33,7 +33,7 @@ import io.swagger.annotations.ApiResponses;
 @Controller
 @RestController
 @RequestMapping("/elecc")
-@CrossOrigin(origins = "https://localhost:4242", allowedHeaders = "*", maxAge=6000)
+@CrossOrigin(origins = "*", allowedHeaders = "*", maxAge=6000)
 @Api(value="UserControllerAPI",consumes=MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
 public class UserController {
 	
@@ -41,7 +41,7 @@ public class UserController {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 		
 	@Autowired
-	private UserServiceImpl userService;
+	private UserService userService;
 	
 	@RequestMapping (value="/authUser", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON)
 	@ApiOperation("Auth user")

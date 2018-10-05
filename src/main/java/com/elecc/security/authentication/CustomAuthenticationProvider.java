@@ -32,7 +32,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
 	/** Valid Credentials for Springboot Security */
 	private static String userAPIAllowed = "admin2";
-	private static String passAPIAllowed = "3E13QAypwaVx01jkmYwa+A==";
+	private static String passAPIAllowed = "oD5TsOGzkZT3dnKuQ/a4PA==";
 
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
@@ -46,7 +46,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
 			DataEncrypter dataCipher = new DataEncrypter();
 			String passClientDecrypted = dataCipher.extractSalt(dataCipher.decrypt(pass));
-			String passAPIServerDecrypted = dataCipher.decrypt(passAPIAllowed);
+			String passAPIServerDecrypted = dataCipher.extractSalt(dataCipher.decrypt(passAPIAllowed));
 
 			if (name.equalsIgnoreCase(userAPIAllowed) && passClientDecrypted.equalsIgnoreCase(passAPIServerDecrypted)) {
 				logger.debug(Constants.MsgDebugOperations.DEBUG_PREFIX_MSG_DEBUG

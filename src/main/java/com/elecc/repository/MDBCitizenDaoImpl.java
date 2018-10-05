@@ -27,7 +27,10 @@ import com.elecc.util.Constants;
 @Qualifier("citizenDao")
 public class MDBCitizenDaoImpl implements CitizenDao {
 
-	private static final long serialVersionUID = 1L;
+	/**
+	 * Serial ID Object
+	 */
+	private static final long serialVersionUID = -1194318132326816585L;
 
 	/** Logger */
 	private static final Logger logger = LoggerFactory.getLogger(MDBCitizenDaoImpl.class);
@@ -46,7 +49,7 @@ public class MDBCitizenDaoImpl implements CitizenDao {
 		query.addCriteria(Criteria.where(Constants.ModelFields.FIELD_CTZ_IDENTIFICATION).is(identification));
 		Citizen citizen = mongoTemplate.findOne(query, Citizen.class);
 
-		if (cipher.extractSalt(cipher.decrypt(citizen.getPass())).equals(cipher.decrypt(pass))) {
+		if (cipher.extractSalt(cipher.decrypt(citizen.getPass())).equals(cipher.extractSalt(cipher.decrypt(pass)))) {
 			
 			logger.debug(Constants.MsgDebugOperations.DEBUG_PREFIX_MSG_DEBUG
 					+ "Checking credentials for user access...");

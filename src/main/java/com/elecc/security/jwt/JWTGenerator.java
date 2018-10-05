@@ -5,12 +5,10 @@ package com.elecc.security.jwt;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.elecc.controller.UserController;
 import com.elecc.security.repository.JWTUser;
-import com.elecc.service.UserServiceImpl;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

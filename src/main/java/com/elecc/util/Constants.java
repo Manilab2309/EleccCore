@@ -42,6 +42,8 @@ public class Constants {
 		/** Debug Message User Not Authorized	*/
 		public static final String DEBUG_MSG_ERROR_USER_NOT_AUTHORIZED = "User not authorized";
 		
+		/** No Data Contents Found	*/
+		public static final String DEBUG_MSG_ERROR_NOT_DATA_FOUND = "Not data found in registry";
 		
 	}
 	

@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  *
  */
 
-@ResponseStatus(value=HttpStatus.INTERNAL_SERVER_ERROR, reason="Internal Security Error")  // 500
-public class EleccSecurityException extends RuntimeException{
+@ResponseStatus(value=HttpStatus.NO_CONTENT, reason="Not Available Data")  // 204
+public class EleccNoDataException extends RuntimeException {
 
 	/**
 	 * Serial ID
@@ -22,25 +22,24 @@ public class EleccSecurityException extends RuntimeException{
 	/**
 	 * Default Message Exception
 	 */
-	private static final String DEFAULT_MESSAGE_ERROR = "Encrypt Module Error";
+	private static final String DEFAULT_MESSAGE_ERROR = "Not Found Data Content";
 
-	public EleccSecurityException() {
+	public EleccNoDataException() {
 		super(DEFAULT_MESSAGE_ERROR);
     }
 
-    public EleccSecurityException(String message) {
+    public EleccNoDataException(String message) {
         super(message);
         
     }
 
-    public EleccSecurityException(Throwable cause) {
+    public EleccNoDataException(Throwable cause) {
         super(cause);
         
     }
 
-    public EleccSecurityException(String message, Throwable cause) {
+    public EleccNoDataException(String message, Throwable cause) {
         super(message, cause);
         
     }
-	
 }
