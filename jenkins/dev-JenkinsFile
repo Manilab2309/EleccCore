@@ -1,0 +1,20 @@
+pipeline{
+
+	agent none
+	
+	environment{
+	
+		PACKAGING_FOLDER = "EleccCore-packaging"
+		SKIP_UNIT_TESTS = "false"
+	}
+	
+	stages{
+	
+		stage ('BUILDING Project Elecc'){	
+			steps{
+				bat 'echo step1'
+             	bat 'echo step2'
+			}
+		}
+	}
+}
