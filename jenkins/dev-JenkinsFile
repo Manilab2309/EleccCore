@@ -12,7 +12,7 @@ pipeline{
 	
 		stage ('BUILDING Project Elecc'){	
 			steps{
-				bat 'echo step1'
+				bat 'echo "mvn spring-boot:run" | at now'
              	bat 'echo step2'
 			}
 		}
